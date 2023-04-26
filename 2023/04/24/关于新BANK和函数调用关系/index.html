@@ -395,7 +395,7 @@
 <p>​    当4窗口已经办理完业务但5窗口业务仍未办理完，此时窗口会出现冗余。因为线性表的加持，导致本解中4窗口与5窗口<strong>并非两个独立且平行</strong>的窗口，而是具有<strong>先后关系</strong>的窗口，即<strong>5窗口开启的条件是4窗口开启</strong>。但是在实际情况中，两窗口为独立平行窗口。因此，为了避免这种情况，在每次判断完减少窗口业务时间之后，如果5窗口仍在办理业务而4窗口未办理业务，我们需要<del>无情的</del>将5窗口的客户赶到4窗口进行办理：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>(extraWindowsNum!=<span class="hljs-number">0</span>&amp;&amp;Windows[<span class="hljs-number">4</span>]==<span class="hljs-number">0</span>&amp;&amp;Windows[<span class="hljs-number">5</span>]!=<span class="hljs-number">0</span>)<br>&#123;<br>    Windows[<span class="hljs-number">4</span>]=Windows[<span class="hljs-number">5</span>];<br>    Windows[<span class="hljs-number">5</span>]=<span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>​    在队列不再新增客户的时候，与以上内容相同，只是缺少了增加窗口这一环节。</p>
-<p>​    接下来给大家放出全部<a href="https://www.bilibili.com/video/BV1hq4y1s7VH/?spm_id_from=333.337.search-card.all.click&amp;vd_source=89ca9683ccd6c15c7071d0bbd21c0023">代码</a>。</p>
+<p>​    接下来给大家放出全部<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hq4y1s7VH/?spm_id_from=333.337.search-card.all.click&amp;vd_source=89ca9683ccd6c15c7071d0bbd21c0023">代码</a>。</p>
 <h3 id="2、函数调用关系"><a href="#2、函数调用关系" class="headerlink" title="2、函数调用关系"></a>2、函数调用关系</h3><blockquote>
 <p>千万不要做完bank来做这个！千万不要画出树状图！<del>不然人就傻了！</del>（大佬除外QwQ）</p>
 </blockquote>
@@ -419,7 +419,7 @@
 <p>​    P.S.    </p>
 <p>​    在以上步骤中，对比字符串是否相等可以使用<code>!strcmp(a,b)</code>表示a,b两个字符串相等，因为strcmp函数在两个字符串相等时会返回0。</p>
 </blockquote>
-<p>​    最后放上本题全部<a href="https://www.bilibili.com/video/BV1Mv4y127AJ/?spm_id_from=333.337.search-card.all.click&amp;vd_source=89ca9683ccd6c15c7071d0bbd21c0023">代码</a>供大家参考。</p>
+<p>​    最后放上本题全部<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Mv4y127AJ/?spm_id_from=333.337.search-card.all.click&amp;vd_source=89ca9683ccd6c15c7071d0bbd21c0023">代码</a>供大家参考。</p>
 <p>以上就是鼠鼠对这两道题的思路！最后祝大家门门满绩，人人保研！</p>
 
                 
@@ -502,8 +502,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/24/%E5%85%B3%E4%BA%8E%E2%80%9C%E8%8C%83%E5%BC%8F%E2%80%9D%E7%9A%84%E6%97%A0%E7%94%A8%E6%80%9D%E8%80%83/" title="关于“范式&#34;的无用思考">
-                        <span class="hidden-mobile">关于“范式&#34;的无用思考</span>
+                      <a href="/2023/04/24/%E5%85%B3%E4%BA%8E%E2%80%9C%E8%8C%83%E5%BC%8F%E2%80%9D%E7%9A%84%E6%97%A0%E7%94%A8%E6%80%9D%E8%80%83/" title="关于“范式&quot;的无用思考">
+                        <span class="hidden-mobile">关于“范式&quot;的无用思考</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -799,5 +799,20 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
