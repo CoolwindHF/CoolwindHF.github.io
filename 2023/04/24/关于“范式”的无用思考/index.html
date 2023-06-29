@@ -24,7 +24,7 @@
 <meta property="og:description" content="关于“范式”的无用思考$\mathscr{Author:CoolWind}$  写主范式真的好烦啊！鼠鼠不想学离散啦！  0、需要用到的知识！0.1 常用的等值演算 \begin{align}p \to q &amp;\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &amp;\Leftrightarrow (p \land q)\vee (\neg p \la">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-04-24T08:11:47.550Z">
-<meta property="article:modified_time" content="2023-04-24T08:11:47.550Z">
+<meta property="article:modified_time" content="2023-06-29T14:15:56.009Z">
 <meta property="article:author" content="CoolWind">
 <meta property="article:tag" content="离散数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4.8k 字
         
       </span>
     
@@ -260,7 +260,7 @@
         
         
         
-          39 分钟
+          41 分钟
         
       </span>
     
@@ -308,6 +308,14 @@
             <!-- SEO header -->
             <h1 style="display: none">关于“范式&quot;的无用思考</h1>
             
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年6月29日 晚上
+                  
+                
+              </p>
+            
             
               <div class="markdown-body">
                 
@@ -316,7 +324,7 @@
 <p>写主范式真的好烦啊！<del>鼠鼠不想学离散啦！</del></p>
 </blockquote>
 <h3 id="0、需要用到的知识！"><a href="#0、需要用到的知识！" class="headerlink" title="0、需要用到的知识！"></a>0、需要用到的知识！</h3><h4 id="0-1-常用的等值演算"><a href="#0-1-常用的等值演算" class="headerlink" title="0.1 常用的等值演算"></a>0.1 常用的等值演算</h4><script type="math/tex; mode=display">
-\begin{align}p \to q &\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &\Leftrightarrow (p \land q)\vee (\neg p \land \neg q)\\p \oplus q &\Leftrightarrow (\neg p \land q)\vee (p \land \neg q)\end{align}</script><h4 id="0-2-运算符优先级"><a href="#0-2-运算符优先级" class="headerlink" title="0.2 运算符优先级"></a>0.2 运算符优先级</h4><p>​    运算符优先级<strong>从高到低</strong>排列为：</p>
+\begin{align}p \to q &\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &\Leftrightarrow (p \land q)\vee (\neg p \land \neg q)\\p \oplus q &\Leftrightarrow (\neg p \vee q)\land (p \vee \neg q)\end{align}</script><h4 id="0-2-运算符优先级"><a href="#0-2-运算符优先级" class="headerlink" title="0.2 运算符优先级"></a>0.2 运算符优先级</h4><p>​    运算符优先级<strong>从高到低</strong>排列为：</p>
 <script type="math/tex; mode=display">
 \neg , \land , \vee , \oplus , \to , \leftrightarrow</script><p>​    同一个联结词连续多次出现且<strong>无括号</strong>则按<strong>从左至右</strong>的顺序运算，</p>
 <p>​    在满足运算次序不变的情况下，运用联结词的优先级规则可以减少合式公式括号。</p>
@@ -437,20 +445,21 @@ p \vee q的主合取范式为p \vee q，主析取范式为(p \land \neg q )\vee 
 <script type="math/tex; mode=display">
 \begin{align}
 (p \to q)\to r &\Leftrightarrow \neg (\neg p \vee q)\vee r\\
-&\Leftrightarrow (p\land q )\vee r
+&\Leftrightarrow (p\land \neg q )\vee r
 \end{align}</script><p>​    可见，我们只用了两步就可以将这个式子转化为析取范式的形式，接下来，我们可以使用<del>奇技淫巧</del>来将其转化成主析取范式。</p>
 <p>​    根据2.2，我们可以将该范式理解为：当$p$与$q$为真时，或者$r$为真时，公式为真。换言之，当$p$与$q$为真时，或者$r$为真时，无论剩下变量如何取值，该公式为真。</p>
 <p>​    又由于根据2.2，主析取范式可以理解为在公式为真的时候所有变量的取值，那么我们不再需要计算，直接将公式写出即可：</p>
 <script type="math/tex; mode=display">
 \begin{align}
-&\left\{(p \land q)\right\}\vee \left[r\right]\\
-\Leftrightarrow &\left\{(p \land q \land r)\vee(p \land q \land \neg r)\right\}\\
+&\left\{(p \land \neg q)\right\}\vee \left[r\right]\\
+\Leftrightarrow &\left\{(p \land \neg q \land r)\vee(p \land \neg q \land \neg r)\right\}\\
 &\vee\left[(p \land q \land r) \vee (\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]\\
-\Leftrightarrow&\left\{(p \land q \land r)\vee(p \land q \land \neg r)\right\}\vee\left[(\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]
+\Leftrightarrow&\left\{(p \land \neg q \land r)\vee(p \land \neg q \land \neg r)\right\}\vee\left[(\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]\\
+\Leftrightarrow&\left\{ p \land \neg q \land \neg r\right\}\vee \left[(\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]
 \end{align}</script><p>​    我们只需要将大括号包括的部分与小括号包括的部分根据2.2的理解简单扩充，并且根据<strong>幂等律</strong>进行消元，便可写出其主析取范式。</p>
 <p>​    再根据3.1的<strong>互补</strong>的性质可知，可写根据真值表或全集补集写出主合取范式：</p>
 <script type="math/tex; mode=display">
-(p \vee q \vee r)\land (p \vee\neg q \vee r)\land(\neg p \vee q\vee r)</script><p>​    </p>
+(p \vee q \vee r)\land (p \vee\neg q \vee r)\land(\neg p \vee q\vee r)\land(\neg p \vee \neg q \vee \neg r)</script><p>​    </p>
 <p>这里建议使用真值表（<del>因为我就是这么做的</del>）：</p>
 <p>step1    </p>
 <p>0    0    0</p>
@@ -469,7 +478,7 @@ p \vee q的主合取范式为p \vee q，主析取范式为(p \land \neg q )\vee 
 <p>1    0    0</p>
 <p><del>1    0    1</del></p>
 <p><del>1    1    0</del></p>
-<p><del>1    1    1</del>                        </p>
+<p>1    1    1                        </p>
 <p>step3</p>
 <p>0    0    0$\to$  $ p \quad q \quad r$</p>
 <p><del>0    0    1</del></p>
@@ -478,7 +487,7 @@ p \vee q的主合取范式为p \vee q，主析取范式为(p \land \neg q )\vee 
 <p>1    0    0 $\to$  $\neg p \quad q \quad r$</p>
 <p><del>1    0    1</del></p>
 <p><del>1    1    0</del></p>
-<p><del>1    1    1</del>    </p>
+<p>1    1    1$\to $ $\neg p \quad \neg q \quad \neg r$</p>
 <p>（从合取到析取也是同样，但是要注意2.2中<strong>0和1</strong>的转换）    </p>
 <p>​    同时，根据真值表方法我们可以看出，直接使用真值表也可以很快的写出主析取范式和主合取范式，当然这样有一定的计算难度，仅适用于简单的公式。</p>
 <p>​    自此，我们完成了<del>奇技淫巧</del>的使用。虽然看起来很无用，但是不用分配律真的很爽。</p>
