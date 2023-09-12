@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Slime.jpg">
+  <link rel="icon" href="/img/Slime.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="CoolWind">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="关于“范式”的无用思考$\mathscr{Author:CoolWind}$  写主范式真的好烦啊！鼠鼠不想学离散啦！  0、需要用到的知识！0.1 常用的等值演算 \begin{align}p \to q &amp;\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &amp;\Leftrightarrow (p \land q)\vee (\neg p \la">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于“范式&quot;的无用思考">
+<meta property="og:url" content="http://cool-wind.top/2023/04/24/%E5%85%B3%E4%BA%8E%E2%80%9C%E8%8C%83%E5%BC%8F%E2%80%9D%E7%9A%84%E6%97%A0%E7%94%A8%E6%80%9D%E8%80%83/index.html">
+<meta property="og:site_name" content="CoolWind&#39;s Blog">
+<meta property="og:description" content="关于“范式”的无用思考$\mathscr{Author:CoolWind}$  写主范式真的好烦啊！鼠鼠不想学离散啦！  0、需要用到的知识！0.1 常用的等值演算 \begin{align}p \to q &amp;\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &amp;\Leftrightarrow (p \land q)\vee (\neg p \la">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-04-24T08:11:47.550Z">
+<meta property="article:modified_time" content="2023-07-08T03:06:28.005Z">
+<meta property="article:author" content="CoolWind">
+<meta property="article:tag" content="离散数学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>关于“范式&#34;的无用思考 - CoolWind&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cool-wind.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fHmKH6N3CPKuIlMv6ODVLIb7-gzGzoHsz","app_key":"BmpK9znksGX4pxu0WovaDYbF","server_url":"https://fhmkh6n3.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+     
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>CoolWind&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/background.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="关于“范式&#34;的无用思考"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        CoolWind
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-24 16:11" pubdate>
+          2023年4月24日 下午
+        </time>
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-bookmark-fill"></i>
+        <span onclick="navigator.clipboard.writeText('http://cool-wind.top/jump/normal_form');alert('复制成功（normal_form）')"> JumpLink: normal_form </span>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">关于“范式&#34;的无用思考</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年7月8日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="关于“范式”的无用思考"><a href="#关于“范式”的无用思考" class="headerlink" title="关于“范式”的无用思考"></a>关于“范式”的<del>无用</del>思考</h1><p>$\mathscr{Author:CoolWind}$</p>
+<blockquote>
+<p>写主范式真的好烦啊！<del>鼠鼠不想学离散啦！</del></p>
+</blockquote>
+<h3 id="0、需要用到的知识！"><a href="#0、需要用到的知识！" class="headerlink" title="0、需要用到的知识！"></a>0、需要用到的知识！</h3><h4 id="0-1-常用的等值演算"><a href="#0-1-常用的等值演算" class="headerlink" title="0.1 常用的等值演算"></a>0.1 常用的等值演算</h4><script type="math/tex; mode=display">
+\begin{align}p \to q &\Leftrightarrow \neg p \vee q\\p \leftrightarrow q &\Leftrightarrow (p \land q)\vee (\neg p \land \neg q)\\p \oplus q &\Leftrightarrow (\neg p \vee q)\land (p \vee \neg q)\end{align}</script><h4 id="0-2-运算符优先级"><a href="#0-2-运算符优先级" class="headerlink" title="0.2 运算符优先级"></a>0.2 运算符优先级</h4><p>​    运算符优先级<strong>从高到低</strong>排列为：</p>
+<script type="math/tex; mode=display">
+\neg , \land , \vee , \oplus , \to , \leftrightarrow</script><p>​    同一个联结词连续多次出现且<strong>无括号</strong>则按<strong>从左至右</strong>的顺序运算，</p>
+<p>​    在满足运算次序不变的情况下，运用联结词的优先级规则可以减少合式公式括号。</p>
+<h4 id="0-3-文字"><a href="#0-3-文字" class="headerlink" title="0.3 文字"></a>0.3 文字</h4><p>​    原子公式和原子公式的否定统称为文字。如$p$与$\neg p$均被称为文字。</p>
+<h4 id="0-4-简单析取式和简单合取式"><a href="#0-4-简单析取式和简单合取式" class="headerlink" title="0.4 简单析取式和简单合取式"></a>0.4 简单析取式和简单合取式</h4><p>​    设n为正整数，$A_1,…,A_n$都是文字，则$A_1 \vee … \vee A_n$称之为简单析取式，$A_1 \land … \land A_n$称之为简单合取式。</p>
+<h3 id="1、什么是范式？"><a href="#1、什么是范式？" class="headerlink" title="1、什么是范式？"></a>1、什么是范式？</h3><p>​    所谓“范式”，就是一种十分“规范”的式子。这样的式子是任意公式的一种“标准”形式，而通过这种形式，我们能十分容易的判断出两个看起来不同的公式是否等价。</p>
+<p>​    例如，完全不同的两个式子：$p \oplus q $与 $\neg (p \leftrightarrow q) $ 却是等价的，通过等值演算，可得出以下发现：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p \oplus q &\Leftrightarrow  (p \land \neg q)\vee (\neg p \land q)\\
+&\Leftrightarrow (p \vee (\neg p \land q))\land (\neg q \vee (\neg p \land q))\\
+&\Leftrightarrow ((p\vee \neg p )\land (p \vee q))\land ((\neg q \vee \neg p)\land (\neg q \vee q))\\
+&\Leftrightarrow (p \vee q) \land (\neg p \vee \neg q)\\ \\
+\neg (p \leftrightarrow q) &\Leftrightarrow \neg ((p \land q)\vee (\neg p \land \neg q))\\
+&\Leftrightarrow \neg (p \land q)\land \neg (\neg p \land \neg q)\\
+&\Leftrightarrow  (p \vee q)\land(\neg p \vee \neg q)\\
+
+\end{align}</script><p>​    <em>（引自《离散数学》第三版1.6节）</em></p>
+<p>​    <del>挖！居然相等诶！好简单的计算过程！</del></p>
+<p>​    可以发现，等值演算的最后两个看似不相等的公式得到的值是一样的，所以这两个公式是等价的。那么$(p \vee q)\land(\neg p \vee \neg q)$这个公式就被称为<strong>“范式”</strong>，通过这个<strong>“规范的式子”</strong>可以知道以上两个公式是完全等价的。</p>
+<p>​    实际上，范式分为<strong>析取范式</strong>和<strong>合取范式</strong>。</p>
+<p>​    设n为正整数，$A_1,…,A_n$都是<strong>简单合取式</strong>，则$A_1 \vee … \vee A_n$称之为析取范式；$A_1,…,A_n$都是<strong>简单析取式</strong>，$A_1 \land … \land A_n$称之为<strong>合取范式</strong>。</p>
+<h3 id="2、什么是主范式？"><a href="#2、什么是主范式？" class="headerlink" title="2、什么是主范式？"></a>2、什么是主范式？</h3><h4 id="2-1-主范式的简单定义"><a href="#2-1-主范式的简单定义" class="headerlink" title="2.1 主范式的简单定义"></a>2.1 主范式的简单定义</h4><p>​    在将同一个式子进行等值演算的过程中，我们可以看到，能够产生很多种等价但是看起来完全不相同的析取范式和合取范式。例如：</p>
+<script type="math/tex; mode=display">
+\begin{aligned} & (p \vee q \rightarrow r) \rightarrow p \\ \Leftrightarrow & \neg(\neg(p \vee q) \vee r) \vee p \\ \Leftrightarrow & ((p \vee q) \wedge \neg r) \vee p \\ \Leftrightarrow & (p \vee q \vee p) \wedge(\neg r \vee p) &合取范式\\ \Leftrightarrow & (p \vee q) \wedge(\neg r \vee p) &合取范式\\ \Leftrightarrow & p \vee(q \wedge \neg r) &析取范式 \\ \Leftrightarrow & p \vee(q \wedge \neg r) \vee(q \wedge \neg q) &析取范式\end{aligned}</script><p>​    <em>（引自《离散数学》第三版1.6）</em>        </p>
+<p>​    所以，为了能够用唯一的一个式子来“规范”公式，因此产生了<strong>“主范式”</strong>。</p>
+<p>​    同范式一样，主范式也分为<strong>主析取范式</strong>和<strong>主合取范式</strong>。</p>
+<p>​    <del>那么，聪明的同学就要问了，什么是主范式呢？</del></p>
+<p>​    在我看来，主范式无非就是将范式的每一个$A_i$都用本身公式中的所有“文字”给<del>塞满</del>。这样的话，必然不会存在两个都是范式但是不相等的尴尬情况啦！</p>
+<p>​    例如，在本节所举的例子中我们可以知道主析取范式是：</p>
+<script type="math/tex; mode=display">
+(p \land q \land r) \vee (p \land q \land \neg r)\vee (p \land \neg q \land r)\vee (p \land \neg q \neg r)\vee (\neg p \land q \land \neg r)</script><p>​    可见，每一个括号中都存在与$p$相关、与$q$相关、与$r$相关的文字，其为主范式。</p>
+<h4 id="2-2-主范式的简单理解"><a href="#2-2-主范式的简单理解" class="headerlink" title="2.2 主范式的简单理解"></a>2.2 主范式的简单理解</h4><p>​    先放出合取和析取的真值表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$p$</th>
+<th style="text-align:center">$q$</th>
+<th style="text-align:center">$p \land q$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$p$</th>
+<th style="text-align:center">$q$</th>
+<th style="text-align:center">$p \vee q$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>​    在以上两个真值表中，我们可以看出，在合取时，至少一项为假，公式为假；在析取时，至少一项为真，公式为真。</p>
+<p>​    根据合取和析取的性质，主合取范式就可以理解为：这是一个表明<strong>公式为假</strong>时所有变元取值情况的式子；主析取范式也可以理解为：这是一个表明<strong>公式为真</strong>时所有变元取值情况的式子。</p>
+<p>​    同时，我们可以将主范式中每一个公式中文字理解为：原文字（如$p$,$q$）即表示<strong>1/0</strong>，其相反文字（如$\neg p $,$\neg q$）即表示<strong>0/1</strong>。</p>
+<p>​    那么，主范式可以这样理解：</p>
+<p>​    <strong>主合取范式</strong>：将范式中的每一个公式中文字提取出来写成集合形式，<strong>原文字表示0</strong>，<strong>相反文字表示1</strong>，主合取范式即表示<strong>公式为假</strong>时变元取值情况。</p>
+<p>​    <strong>主析取范式</strong>：将范式中的每一个公式中文字提取出来写成集合形式，<strong>原文字表示1</strong>，<strong>相反文字表示0</strong>，主合取范式即表示<strong>公式为真</strong>时变元取值情况。</p>
+<p>​    同样的，<strong>范式</strong>也可以这样理解。</p>
+<h3 id="3、如何优雅的写出主范式"><a href="#3、如何优雅的写出主范式" class="headerlink" title="3、如何优雅的写出主范式"></a>3、如何<del>优雅</del>的写出主范式</h3><h4 id="3-1-主析取范式和主合取范式之间的关系"><a href="#3-1-主析取范式和主合取范式之间的关系" class="headerlink" title="3.1 主析取范式和主合取范式之间的关系"></a>3.1 主析取范式和主合取范式之间的关系</h4><p>​    我们可以得出以下结论：</p>
+<p>​    主析取范式和主合取范式的<strong>公式</strong>数量之和等于$2^n$，其中$n$为变元的数量，且两个范式中的公式<strong>“互补”</strong>。</p>
+<p>​    <strong>公式</strong>：指上文主范式定义中提到的$A_i$；</p>
+<p>​    <strong>互补</strong>：指两个式子中包含的每个公式中的文字组合的相关性，例如：</p>
+<script type="math/tex; mode=display">
+p \vee q的主合取范式为p \vee q，主析取范式为(p \land \neg q )\vee (\neg p \land  q)\vee (p \land  q)</script><p>​    在上例中，可知<strong>主合取范式</strong>中公式包含的文字组合的集合为$\left\{(p,q)\right\}$，<strong>主析取范式</strong>中公式包含的文字组合的集合为$\left\{(p,\neg q),(\neg p , q),( p , q)\right\}$，我们设文字组合集合的<strong>全集</strong>为</p>
+<script type="math/tex; mode=display">
+\left\{(p,\neg q),(\neg p , q),( \neg p ,\neg q),(p,q)\right\}</script><p>​    我们可以发现，<strong>主析取范式</strong>中文字组合的集合，为<strong>主合取范式</strong>文字组合的集合在全集中的补集<strong>取反</strong>（即将每一个文字变为其相反文字，如：$p$变成$\neg p$；可由2.2结论易知），这样我们这样我们称其<strong>互补</strong>，所有的主析取范式和主合取范式均遵循这样的规律。所以，在求取主范式的过程中，我们只需要算出主析取范式<strong>或</strong>主合取范式的<strong>其中一个</strong>就可以。</p>
+<h4 id="3-2-从范式到主范式"><a href="#3-2-从范式到主范式" class="headerlink" title="3.2 从范式到主范式"></a>3.2 从范式到主范式</h4><p>​    拿到一个式子，我们需要进行等值演算。而在将公式变为只由$\left\{\neg,\vee,\land\right\}$表示之后，我们便可以由2.2的简单理解去对范式进行变形，不用运用分配律进行复杂的等值验算。这里引入离散第三周作业中的例子：</p>
+<script type="math/tex; mode=display">
+求合式公式 ( p \to q)\to r的主析取范式和主合取范式</script><p>​    首先我们将该合式公式进行等值演算，消除掉其中的$\to$，这里需要用到0.1与0.2的知识。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+(p \to q)\to r &\Leftrightarrow \neg (\neg p \vee q)\vee r\\
+&\Leftrightarrow (p\land \neg q )\vee r
+\end{align}</script><p>​    可见，我们只用了两步就可以将这个式子转化为析取范式的形式，接下来，我们可以使用<del>奇技淫巧</del>来将其转化成主析取范式。</p>
+<p>​    根据2.2，我们可以将该范式理解为：当$p$与$q$为真时，或者$r$为真时，公式为真。换言之，当$p$与$q$为真时，或者$r$为真时，无论剩下变量如何取值，该公式为真。</p>
+<p>​    又由于根据2.2，主析取范式可以理解为在公式为真的时候所有变量的取值，那么我们不再需要计算，直接将公式写出即可：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\left\{(p \land \neg q)\right\}\vee \left[r\right]\\
+\Leftrightarrow &\left\{(p \land \neg q \land r)\vee(p \land \neg q \land \neg r)\right\}\\
+&\vee\left[(p \land q \land r) \vee (\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]\\
+\Leftrightarrow&\left\{(p \land \neg q \land r)\vee(p \land \neg q \land \neg r)\right\}\vee\left[(\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]\\
+\Leftrightarrow&\left\{ p \land \neg q \land \neg r\right\}\vee \left[(\neg p \land q\land r)\vee (\neg p \land \neg q \land r)\vee(p \land \neg q\land r)\right]
+\end{align}</script><p>​    我们只需要将大括号包括的部分与小括号包括的部分根据2.2的理解简单扩充，并且根据<strong>幂等律</strong>进行消元，便可写出其主析取范式。</p>
+<p>​    再根据3.1的<strong>互补</strong>的性质可知，可写根据真值表或全集补集写出主合取范式：</p>
+<script type="math/tex; mode=display">
+(p \vee q \vee r)\land (p \vee\neg q \vee r)\land(\neg p \vee q\vee r)\land(\neg p \vee \neg q \vee \neg r)</script><p>​    </p>
+<p>这里建议使用真值表（<del>因为我就是这么做的</del>）：</p>
+<p>step1    </p>
+<p>0    0    0</p>
+<p>0    0    1</p>
+<p>0    1    0</p>
+<p>0    1    1</p>
+<p>1    0    0</p>
+<p>1    0    1</p>
+<p>1    1    0</p>
+<p>1    1    1                        </p>
+<p>step2    </p>
+<p>0    0    0</p>
+<p><del>0    0    1</del></p>
+<p>0    1    0</p>
+<p><del>0    1    1</del></p>
+<p>1    0    0</p>
+<p><del>1    0    1</del></p>
+<p><del>1    1    0</del></p>
+<p>1    1    1                        </p>
+<p>step3</p>
+<p>0    0    0$\to$  $ p \quad q \quad r$</p>
+<p><del>0    0    1</del></p>
+<p>0    1    0$\to$  $ p \quad \neg q \quad r$</p>
+<p><del>0    1    1</del></p>
+<p>1    0    0 $\to$  $\neg p \quad q \quad r$</p>
+<p><del>1    0    1</del></p>
+<p><del>1    1    0</del></p>
+<p>1    1    1$\to $ $\neg p \quad \neg q \quad \neg r$</p>
+<p>（从合取到析取也是同样，但是要注意2.2中<strong>0和1</strong>的转换）    </p>
+<p>​    同时，根据真值表方法我们可以看出，直接使用真值表也可以很快的写出主析取范式和主合取范式，当然这样有一定的计算难度，仅适用于简单的公式。</p>
+<p>​    自此，我们完成了<del>奇技淫巧</del>的使用。虽然看起来很无用，但是不用分配律真的很爽。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">#离散数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>关于“范式&#34;的无用思考</div>
+      <div>http://cool-wind.top/2023/04/24/关于“范式”的无用思考/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>CoolWind</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E5%85%B3%E4%BA%8E%E6%96%B0BANK%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB/" title="关于新BANK和函数调用关系">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">关于新BANK和函数调用关系</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

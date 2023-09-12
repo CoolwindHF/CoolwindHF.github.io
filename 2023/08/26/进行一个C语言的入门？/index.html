@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Slime.jpg">
+  <link rel="icon" href="/img/Slime.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="CoolWind">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="进行一个C语言的入门？$\mathcal{Author:CoolWind\quad Group:while(1)\quad Date:2023.8.26}$  0x00 一个c语言程序分为几个部分？0、分号 分号作为c语言中每个语句的结束符号，在语句结束的时候需要加入，但是在预处理、以及条件语句后面不需要加入。  1、预处理部分 这一部分包括所要加载的头文件，使用#include &lt;stdi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="进行一个C语言的入门？">
+<meta property="og:url" content="http://cool-wind.top/2023/08/26/%E8%BF%9B%E8%A1%8C%E4%B8%80%E4%B8%AAC%E8%AF%AD%E8%A8%80%E7%9A%84%E5%85%A5%E9%97%A8%EF%BC%9F/index.html">
+<meta property="og:site_name" content="CoolWind&#39;s Blog">
+<meta property="og:description" content="进行一个C语言的入门？$\mathcal{Author:CoolWind\quad Group:while(1)\quad Date:2023.8.26}$  0x00 一个c语言程序分为几个部分？0、分号 分号作为c语言中每个语句的结束符号，在语句结束的时候需要加入，但是在预处理、以及条件语句后面不需要加入。  1、预处理部分 这一部分包括所要加载的头文件，使用#include &lt;stdi">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-26T07:39:28.050Z">
+<meta property="article:modified_time" content="2023-08-26T15:23:36.084Z">
+<meta property="article:author" content="CoolWind">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>进行一个C语言的入门？ - CoolWind&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cool-wind.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fHmKH6N3CPKuIlMv6ODVLIb7-gzGzoHsz","app_key":"BmpK9znksGX4pxu0WovaDYbF","server_url":"https://fhmkh6n3.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+     
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>CoolWind&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/background.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="进行一个C语言的入门？"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        CoolWind
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-26 15:39" pubdate>
+          2023年8月26日 下午
+        </time>
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-bookmark-fill"></i>
+        <span onclick="navigator.clipboard.writeText('http://cool-wind.top/jump/c_introduction');alert('复制成功（c_introduction）')"> JumpLink: c_introduction </span>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">进行一个C语言的入门？</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年8月26日 晚上
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="进行一个C语言的入门？"><a href="#进行一个C语言的入门？" class="headerlink" title="进行一个C语言的入门？"></a>进行一个C语言的入门？</h1><p>$\mathcal{Author:CoolWind\quad Group:while(1)\quad Date:2023.8.26}$ </p>
+<h3 id="0x00-一个c语言程序分为几个部分？"><a href="#0x00-一个c语言程序分为几个部分？" class="headerlink" title="0x00 一个c语言程序分为几个部分？"></a>0x00 一个c语言程序分为几个部分？</h3><p><strong>0、分号</strong></p>
+<p>分号作为c语言中每个语句的结束符号，在语句结束的时候需要加入，但是在<strong>预处理</strong>、以及<strong>条件语句</strong>后面不需要加入。 </p>
+<p><strong>1、预处理部分</strong></p>
+<p>这一部分包括所要加载的头文件，使用<code>#include &lt;stdio.h&gt;</code>的指令进行加载。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">头文件</th>
+<th style="text-align:center">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&lt;stdio.h&gt;</code></td>
+<td style="text-align:center">输入输出函数，如 <code>printf</code>、<code>scanf</code> 等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;stdlib.h&gt;</code></td>
+<td style="text-align:center">内存管理、类型转换、随机数生成等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;string.h&gt;</code></td>
+<td style="text-align:center">字符串操作函数，如 <code>strcpy</code>、<code>strcat</code>、<code>strlen</code> 等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;math.h&gt;</code></td>
+<td style="text-align:center">数学函数，如数学运算、三角函数、对数函数等。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;ctype.h&gt;</code></td>
+<td style="text-align:center">字符处理函数，如字符分类、大小写转换等。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>包括你要定义的宏，例如<code>#define TRUE 1</code></p>
+<p>此部分不需要加<code>;</code></p>
+<p><strong>2、主函数与定义函数</strong></p>
+<p>所谓主函数就是程序的主要运行部分，在c标准中定义主函数的形式为<code>int main(int argc, char *argv[])</code>，在初学的时候，只需要写成<code>int main()</code>即可，是否加<code>void</code>根据个人喜好来定。</p>
+<p>注意，因为主函数是一个返回<code>int</code>类型的函数，因此在主函数结束的最后要进行<code>return 0</code>，如果你在本地没有<code>return 0</code>大概率可以运行，但是上传到<code>OJ</code>之后可能会报错。</p>
+<p>所谓定义函数就是你自己可以DIY的函数，完成你自己想完成的功能。</p>
+<p><strong>3、变量</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">变量类型</th>
+<th style="text-align:left">描述和特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>int</code></td>
+<td style="text-align:left">整数类型，通常用来表示整数值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>short</code></td>
+<td style="text-align:left">短整数类型，占用较少内存。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>long</code></td>
+<td style="text-align:left">长整数类型，用于表示较大的整数值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>long long</code></td>
+<td style="text-align:left">更长的整数类型，表示更大范围的整数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>char</code></td>
+<td style="text-align:left">字符类型，用于表示单个字符。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>float</code></td>
+<td style="text-align:left">单精度浮点数类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>double</code></td>
+<td style="text-align:left">双精度浮点数类型，提供更高精度。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unsigned int</code></td>
+<td style="text-align:left">无符号整数类型，仅包含非负整数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unsigned char</code></td>
+<td style="text-align:left">无符号字符类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unsigned short</code></td>
+<td style="text-align:left">无符号短整数类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unsigned long</code></td>
+<td style="text-align:left">无符号长整数类型。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>unsigned long long</code></td>
+<td style="text-align:left">无符号更长的整数类型。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在c语言中使用变量之前需要进行一个变量的定义，并且在此时可以使用<code>=</code>进行变量的初始化。</p>
+<p>同时，每种数据类型都有自己对应的范围：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>char</code></td>
+<td>-128 到 127 或 0 到 255（取决于有无符号修饰）</td>
+</tr>
+<tr>
+<td><code>unsigned char</code></td>
+<td>0 到 255</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>-32,768 到 32,767</td>
+</tr>
+<tr>
+<td><code>unsigned short</code></td>
+<td>0 到 65,535</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+<td><code>unsigned int</code></td>
+<td>0 到 4,294,967,295</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>-2,147,483,648 到 2,147,483,647</td>
+</tr>
+<tr>
+<td><code>unsigned long</code></td>
+<td>0 到 4,294,967,295</td>
+</tr>
+<tr>
+<td><code>long long</code></td>
+<td>-9,223,372,036,854,775,808 到 9,223,372,036,854,775,807</td>
+</tr>
+<tr>
+<td><code>unsigned long long</code></td>
+<td>0 到 18,446,744,073,709,551,615</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>大约 1.2E-38 到 3.4E+38</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>大约 2.3E-308 到 1.7E+308</td>
+</tr>
+<tr>
+<td><code>long double</code></td>
+<td>大约 3.4E-4932 到 1.1E+4932</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因此，使用数据类型或者选择算法的时候要注意自己的数据范围，不要超过数据范围导致<code>WA</code>。</p>
+<p>同时，变量分为<strong>全局变量</strong>和<strong>局部变量</strong>，<strong>全局变量</strong>顾名思义可以在整个c语言文件中随时随地进行调用，而<strong>局部变量</strong>只能在其所在的代码块以及该代码块所包含的代码块中进行使用。</p>
+<p>如在不同位置有同名变量，那么在代码块中优先使用该代码块中的同名变量，再依次向外使用。</p>
+<p><strong>4、库函数</strong></p>
+<p>在头文件中包含的、可以直接调用的函数都可以称之为库函数。</p>
+<p>例如<code>printf</code>,<code>scanf</code>这样的函数都是库函数，需要自己去积累或者去查询。</p>
+<p><strong>5、运算符</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">运算符</th>
+<th style="text-align:left">描述和用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>+</code></td>
+<td style="text-align:left">加法运算符，用于将两个数相加。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-</code></td>
+<td style="text-align:left">减法运算符，用于将一个数减去另一个数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>*</code></td>
+<td style="text-align:left">乘法运算符，用于将两个数相乘。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/</code></td>
+<td style="text-align:left">除法运算符，用于将一个数除以另一个数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%</code></td>
+<td style="text-align:left">取模运算符，返回除法的余数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>++</code></td>
+<td style="text-align:left">自增运算符，将操作数的值加一。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>--</code></td>
+<td style="text-align:left">自减运算符，将操作数的值减一。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>=</code></td>
+<td style="text-align:left">赋值运算符，用于将右边的值赋给左边的变量。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>+=</code></td>
+<td style="text-align:left">加法赋值运算符，相当于 <code>a = a + b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>-=</code></td>
+<td style="text-align:left">减法赋值运算符，相当于 <code>a = a - b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>*=</code></td>
+<td style="text-align:left">乘法赋值运算符，相当于 <code>a = a * b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/=</code></td>
+<td style="text-align:left">除法赋值运算符，相当于 <code>a = a / b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%=</code></td>
+<td style="text-align:left">取模赋值运算符，相当于 <code>a = a % b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>==</code></td>
+<td style="text-align:left">相等运算符，检查两个操作数是否相等。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>!=</code></td>
+<td style="text-align:left">不等运算符，检查两个操作数是否不相等。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;</code></td>
+<td style="text-align:left">大于运算符，检查左边的操作数是否大于右边的操作数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;</code></td>
+<td style="text-align:left">小于运算符，检查左边的操作数是否小于右边的操作数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;=</code></td>
+<td style="text-align:left">大于等于运算符，检查左边的操作数是否大于等于右边的操作数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;=</code></td>
+<td style="text-align:left">小于等于运算符，检查左边的操作数是否小于等于右边的操作数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&amp;&amp;</code></td>
+<td style="text-align:left">逻辑与运算符，用于逻辑与操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>!</code></td>
+<td style="text-align:left">逻辑非运算符，取反操作数的逻辑值。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&amp;</code></td>
+<td style="text-align:left">按位与运算符，对操作数的每个位执行逻辑与操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>^</code></td>
+<td style="text-align:left">按位异或运算符，对操作数的每个位执行逻辑异或操作。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>~</code></td>
+<td style="text-align:left">按位取反运算符，反转操作数的每个位。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;&lt;</code></td>
+<td style="text-align:left">左移运算符，将操作数的二进制位左移指定的位数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;&gt;</code></td>
+<td style="text-align:left">右移运算符，将操作数的二进制位右移指定的位数。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&amp;=</code></td>
+<td style="text-align:left">按位与赋值运算符，相当于 <code>a = a &amp; b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>^=</code></td>
+<td style="text-align:left">按位异或赋值运算符，相当于 <code>a = a ^ b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&lt;&lt;=</code></td>
+<td style="text-align:left">左移赋值运算符，相当于 <code>a = a &lt;&lt; b</code>。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>&gt;&gt;=</code></td>
+<td style="text-align:left">右移赋值运算符，相当于 <code>a = a &gt;&gt; b</code>。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>6、条件语句</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>控制语句</th>
+<th>描述和用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>if</code> 语句</td>
+<td>根据条件的真假来执行不同的代码块。</td>
+</tr>
+<tr>
+<td><code>switch</code> 语句</td>
+<td>基于表达式的值，在多个固定值分支中选择执行代码块。</td>
+</tr>
+<tr>
+<td><code>while</code> 循环</td>
+<td>当条件为真时重复执行代码块。</td>
+</tr>
+<tr>
+<td><code>do-while</code> 循环</td>
+<td>先执行一次代码块，然后在条件为真时重复执行。</td>
+</tr>
+<tr>
+<td><code>for</code> 循环</td>
+<td>初始化、条件判断和迭代步骤的循环。</td>
+</tr>
+<tr>
+<td><code>break</code> 语句</td>
+<td>在循环或 <code>switch</code> 语句中立即退出。</td>
+</tr>
+<tr>
+<td><code>continue</code> 语句</td>
+<td>跳过当前迭代步骤，继续下一次迭代。</td>
+</tr>
+<tr>
+<td><code>goto</code> 语句</td>
+<td>无条件跳转到指定的标签位置。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中，<code>if</code>,<code>else if</code>,<code>else</code>,<code>while</code>语句后如果不加<code>&#123;&#125;</code>的代码块，那么只能执行该语句之后的<strong>一行</strong>语句。</p>
+<h3 id="0x01-转义字符是什么"><a href="#0x01-转义字符是什么" class="headerlink" title="0x01 转义字符是什么"></a>0x01 转义字符是什么</h3><blockquote>
+<h4 id="2022-C1-A"><a href="#2022-C1-A" class="headerlink" title="2022-C1-A"></a>2022-C1-A</h4><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>今年是北航70周年校庆，让我们祝北航生日快乐！。 要求用三行输出三个句子。分别是:</p>
+<p><strong>Hello, BUAA!</strong></p>
+<p><strong>This year is your 70th birthday!</strong></p>
+<p><strong>Happy birthday!</strong></p>
+</blockquote>
+<p>本题中主要考察大家对<code>printf</code>函数的使用。</p>
+<p><code>printf</code>函数需要现在第一个参数的位置加上<strong>你想要打印的</strong>字符（包括你想要打印的字符以及想要打印的变量的格式控制符，如<code>%d</code>,<code>%lld</code>,<code>%lf</code>等）。</p>
+<p>在第二个参数位置需要<strong>按照顺序</strong>填写上你想要打印的变量的<strong>名称</strong>。</p>
+<p>控制字符对应表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">格式控制字符</th>
+<th style="text-align:left">描述</th>
+<th style="text-align:left">对应的数据类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>%d</code></td>
+<td style="text-align:left">有符号十进制整数</td>
+<td style="text-align:left"><code>int</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%ld</code></td>
+<td style="text-align:left">有符号长整数</td>
+<td style="text-align:left"><code>long</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%u</code></td>
+<td style="text-align:left">无符号十进制整数</td>
+<td style="text-align:left"><code>unsigned int</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%lu</code></td>
+<td style="text-align:left">无符号长整数</td>
+<td style="text-align:left"><code>unsigned long</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%f</code></td>
+<td style="text-align:left">浮点数</td>
+<td style="text-align:left"><code>float</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%lf</code></td>
+<td style="text-align:left">双精度浮点数</td>
+<td style="text-align:left"><code>double</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%c</code></td>
+<td style="text-align:left">字符</td>
+<td style="text-align:left"><code>char</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%s</code></td>
+<td style="text-align:left">字符串</td>
+<td style="text-align:left"><code>char *</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%p</code></td>
+<td style="text-align:left">指针</td>
+<td style="text-align:left">(任意指针类型)</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%x</code></td>
+<td style="text-align:left">无符号十六进制整数（小写字母）</td>
+<td style="text-align:left"><code>unsigned int</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%X</code></td>
+<td style="text-align:left">无符号十六进制整数（大写字母）</td>
+<td style="text-align:left"><code>unsigned int</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>%%</code></td>
+<td style="text-align:left">百分号字符</td>
+<td style="text-align:left">无</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>转义字符表：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">\\’</th>
+<th style="text-align:left"><strong>用于表示字符常量<code>&#39;</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>\\”</strong></td>
+<td style="text-align:left"><strong>用于表示一个字符产内部的双引号<code>&quot;</code></strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>\\n</strong></td>
+<td style="text-align:left"><strong>用于表示换行</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>\\r</strong></td>
+<td style="text-align:left"><strong>回车</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>\\t</strong></td>
+<td style="text-align:left"><strong>水平制表符(Tab)</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>题解代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, BUAA!\nThis year is your 70th birthday!\nHappy birthday!&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="0x02-这啥啊？咋输入啊？"><a href="#0x02-这啥啊？咋输入啊？" class="headerlink" title="0x02 这啥啊？咋输入啊？"></a>0x02 这啥啊？咋输入啊？</h3><blockquote>
+<h4 id="2022-C1-B"><a href="#2022-C1-B" class="headerlink" title="2022-C1-B"></a>2022-C1-B</h4><h4 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h4><p>式部茉优需要计算学生们的星幽能力值经过增强化后的数值。 现有原能力值 $X_0$ 和加值 $\Delta$，需要你计算出增强后的数值 $X_1$，满足 $X_1=X_0+\Delta$。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共一行，两个数。第一个数为 $X_0$，第二个数为 $\Delta$。含义如上述描述。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，一个数。为计算得出的 $X_1$ 数值。</p>
+</blockquote>
+<p>本题主要考察的是<code>scanf</code>函数的使用。</p>
+<p>注意对于<strong>变量</strong>来说，在进行<code>scanf</code>的时候要在变量前面加上取址符<code>&amp;</code>，而对于<strong>数组</strong>来说不需要。</p>
+<p>题解代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> a=<span class="hljs-number">0</span>,b=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,a+b);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="0x03-AI就是n个if函数？"><a href="#0x03-AI就是n个if函数？" class="headerlink" title="0x03 AI就是n个if函数？"></a>0x03 AI就是n个if函数？</h3><blockquote>
+<p>曾经有人说if-else是ai的基础，中间忘了，后面忘了。</p>
+<h4 id="2022-C1-D"><a href="#2022-C1-D" class="headerlink" title="2022-C1-D"></a>2022-C1-D</h4><h4 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h4><p>青豆正在投球。现在已知青豆投出球的距离，请你帮他算算能否正好投入球框内？</p>
+<p>已知青豆和球框相距53米，如果他投出球的距离小于53米；则输出 <code>Too close!</code> ，如果正好投出了53米，则输出 <code>Bingo!</code> ；如果投出的距离大于53米，则输出 <code>Too far!</code> 。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>一个整数 a，代表青豆投出球的距离。</p>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>一行一个字符串。</p>
+</blockquote>
+<p>考察<code>if-else if-else</code>函数的使用。</p>
+<p>在<code>if</code>后面加上所要判断的判断语句，如果这个语句为真，那么就要进行<code>if</code>后函数块内的内容，为假则不执行，向下进行。</p>
+<p>题解代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;a);<br>    <span class="hljs-keyword">if</span>(a&lt;<span class="hljs-number">53</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Too close!&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(a==<span class="hljs-number">53</span>)<br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Bingo!&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Too far!&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="0x04-嗯？这个循环怎么跳不出？"><a href="#0x04-嗯？这个循环怎么跳不出？" class="headerlink" title="0x04 嗯？这个循环怎么跳不出？"></a>0x04 嗯？这个循环怎么跳不出？</h3><blockquote>
+<h4 id="2022-C1-E"><a href="#2022-C1-E" class="headerlink" title="2022-C1-E"></a>2022-C1-E</h4><h4 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h4><p>小羊学姐很开兴又有新生来到校园学习啦！兴奋之下，她报名了帮助新生学弟学妹们搬书的志愿活动（大家都知道开学的新教材真的很多啊）。志愿工作当天，有好多书需要搬，书籍被分成了一堆一堆的，每个书堆分别有 a1 , a2 , a3 ,…, an ,… 本书，小羊学姐每一次需要搬一个书堆（有且仅一个）的书到目的地去。由于书籍堆数太多，所以一眼看不出来一共有多少堆，小羊学姐想请你帮忙求出：对于今天的搬书工作，一共有多少本书籍？一共有多少个书堆？她平均每次搬了多少本？（本题的测试数据给得比较简单，题中直接用 <code>int</code>定义变量就可以了）</p>
+<h4 id="输入-1"><a href="#输入-1" class="headerlink" title="输入"></a>输入</h4><p>一共有若干行输入，每行输入一个 <code>int</code> 型的正整数，当输入 <code>0</code> 时表明输入结束，且 <code>0</code>不计入书籍堆数</p>
+<h4 id="输出-1"><a href="#输出-1" class="headerlink" title="输出"></a>输出</h4><p>一共有一行输出，三个 <code>int</code> 型的正整数，从左往右依次为：书籍总数，书堆总数，平均每次搬运的书籍个数（每两个正整数之间一个空格）</p>
+</blockquote>
+<p>while循环结构是一个很好的东西，这样就省去了你写重复代码的时间，并且看起来不像<del>shit mountain</del>。</p>
+<p>但是<strong>注意</strong>循环跳出条件，不然就会发生本节标题的情况。</p>
+<p><code>while</code>语句后的括号中需要填写的是控制语句，例如<code>while(n&lt;6)</code>就是在变量<code>n</code>小于6的时候执行语句控制下的代码块。</p>
+<p><code>do-while</code>语句是先执行一次<code>do</code>后代码块内的内容之后，如果满足<code>while</code>后的控制条件，那么再次执行该代码块的内容，直到不满足条件。</p>
+<p>题解代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> book=<span class="hljs-number">0</span>,num=<span class="hljs-number">0</span>,sum=<span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;book);<br>    <span class="hljs-keyword">while</span>(book!=<span class="hljs-number">0</span>)<br>    &#123;<br>        num++;<br>        sum+=book;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;book);<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,sum,num,sum/num);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> book=<span class="hljs-number">0</span>,num=<span class="hljs-number">0</span>,sum=<span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">do</span><br>    &#123;<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;book);<br>        num++;<br>        sum+=book;<br>    &#125;<span class="hljs-keyword">while</span>(book!=<span class="hljs-number">0</span>);<br>    num--;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d %d&quot;</span>,sum,num,sum/num);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="0x05-这循环怎么比上一个简洁"><a href="#0x05-这循环怎么比上一个简洁" class="headerlink" title="0x05 这循环怎么比上一个简洁"></a>0x05 这循环怎么比上一个简洁</h3><blockquote>
+<h4 id="2022-C1-G"><a href="#2022-C1-G" class="headerlink" title="2022-C1-G"></a>2022-C1-G</h4><h4 id="题目描述-4"><a href="#题目描述-4" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个数字 n(4≤n≤10000 ，用 “∗” 打印形状为如样例所示的六边形 。</p>
+<h4 id="输入-2"><a href="#输入-2" class="headerlink" title="输入"></a>输入</h4><p>一行，一个数字 n 。</p>
+<h4 id="输出-2"><a href="#输出-2" class="headerlink" title="输出"></a>输出</h4><p>第一行，n−2 个 ∗ 。</p>
+<p>第二行，n 个 ∗ 。</p>
+<p>第三行，n−2 个 ∗ 。</p>
+<p>形状为如样例所示的六边形.</p>
+</blockquote>
+<p><code>for</code>循环主要用来简化循环的书写形式，其组成为<code>for(s1;s2;s3)</code>。</p>
+<p>除此之外<code>for</code>循环可以与<code>while</code>循环互相转化，<code>for</code>循环可以有如下等价形式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++)<br>&#123;<br>	...<br>&#125;<br><br>等价于<br><br><span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(i&lt;<span class="hljs-number">10</span>)<br>&#123;<br>	...<br>	i++;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>题解代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-type">int</span> n;<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>,&amp;n);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-2</span>;i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n;i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;n<span class="hljs-number">-2</span>;i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/C%E8%AF%AD%E8%A8%80/">#C语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>进行一个C语言的入门？</div>
+      <div>http://cool-wind.top/2023/08/26/进行一个C语言的入门？/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>CoolWind</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月26日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/04/%E5%AF%9D%E5%AE%A4%E6%B4%97%E8%A1%A3%E6%9C%BA%E5%AE%89%E8%A3%85%E5%B0%8FTips/" title="寝室洗衣机安装小Tips">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">寝室洗衣机安装小Tips</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/07/08/Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Web学习笔记">
+                        <span class="hidden-mobile">Web学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

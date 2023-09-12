@@ -1,0 +1,968 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/Slime.jpg">
+  <link rel="icon" href="/img/Slime.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="CoolWind">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="BUAACTF-Writeup$\mathscr{Author:CoolWind}$  大一鼠鼠完全不会别的只能水水misc拿点分数罢了QnQ 仅供参考，大佬勿喷  第一次打CTF扔点入不了眼的战绩：   总排名：10&#x2F;45 新星赛赛道：5&#x2F;23 Misc：6&#x2F;8 一血x1 二血x1 三血x2 Web：1&#x2F;8 Reserve：3&#x2F;9  所以说啊，鼠鼠是一柱擎天型选手，除了misc完全都不会捏。 求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUAACTF-Writeup">
+<meta property="og:url" content="http://cool-wind.top/2023/04/27/BUAACTF-Writeup/index.html">
+<meta property="og:site_name" content="CoolWind&#39;s Blog">
+<meta property="og:description" content="BUAACTF-Writeup$\mathscr{Author:CoolWind}$  大一鼠鼠完全不会别的只能水水misc拿点分数罢了QnQ 仅供参考，大佬勿喷  第一次打CTF扔点入不了眼的战绩：   总排名：10&#x2F;45 新星赛赛道：5&#x2F;23 Misc：6&#x2F;8 一血x1 二血x1 三血x2 Web：1&#x2F;8 Reserve：3&#x2F;9  所以说啊，鼠鼠是一柱擎天型选手，除了misc完全都不会捏。 求">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426142636.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426143531.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426144054.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426144731.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426145057.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426145447.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/QQ%E5%9B%BE%E7%89%8720230426145705.jpg">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426145816.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426150827.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426151704.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426151816.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426150722.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426152653.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426153741.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/QQ%E5%9B%BE%E7%89%8720230426154920.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426155102.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426160836.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230426161525.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426165248.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426205843.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426210358.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/screenshot.jpg">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426211136.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426211247.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426211538.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426212153.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426233613.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426233956.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426234201.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426234311.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426234452.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426234605.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426234656.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230427000103.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230427000216.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230427000449.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230427000811.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230427001105.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202304270011051.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230427002514.png">
+<meta property="og:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230427003823.png">
+<meta property="article:published_time" content="2023-04-26T16:45:44.939Z">
+<meta property="article:modified_time" content="2023-07-08T03:06:42.713Z">
+<meta property="article:author" content="CoolWind">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Misc">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://cool-wind.top/img/BUAACTF/%E5%BE%AE%E4%BF%A1%E6%88%AA%E5%9B%BE_20230426142636.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>BUAACTF-Writeup - CoolWind&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"cool-wind.top","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"fHmKH6N3CPKuIlMv6ODVLIb7-gzGzoHsz","app_key":"BmpK9znksGX4pxu0WovaDYbF","server_url":"https://fhmkh6n3.lc-cn-n1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+     
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>CoolWind&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/background.jpeg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="BUAACTF-Writeup"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        CoolWind
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-04-27 00:45" pubdate>
+          2023年4月27日 凌晨
+        </time>
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-bookmark-fill"></i>
+        <span onclick="navigator.clipboard.writeText('http://cool-wind.top/jump/BUAACTF-Writeup');alert('复制成功（BUAACTF-Writeup）')"> JumpLink: BUAACTF-Writeup </span>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          85 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BUAACTF-Writeup</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2023年7月8日 上午
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="BUAACTF-Writeup"><a href="#BUAACTF-Writeup" class="headerlink" title="BUAACTF-Writeup"></a>BUAACTF-Writeup</h1><p>$\mathscr{Author:CoolWind}$</p>
+<blockquote>
+<p>大一鼠鼠完全不会别的只能水水misc拿点分数罢了QnQ</p>
+<p>仅供参考，大佬勿喷</p>
+</blockquote>
+<p>第一次打CTF扔点入不了眼的战绩：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426142636.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>总排名：10/45</li>
+<li>新星赛赛道：5/23</li>
+<li>Misc：6/8 一血x1 二血x1 三血x2</li>
+<li>Web：1/8</li>
+<li>Reserve：3/9</li>
+</ul>
+<p>所以说啊，鼠鼠是<del>一柱擎天型选手</del>，除了misc完全都不会捏。</p>
+<p>求大佬教我本领。</p>
+<h2 id="Misc向"><a href="#Misc向" class="headerlink" title="Misc向"></a>Misc向</h2><h3 id="1、zhuzhu"><a href="#1、zhuzhu" class="headerlink" title="1、zhuzhu*"></a>1、zhuzhu*</h3><blockquote>
+<p>屑X2喜欢的鬼灭开更啦！特地把flag藏在了猪猪的图片里，你能找到吗？</p>
+<p>hint1：糟了，X2貌似在gift里放了不得了的东西？</p>
+</blockquote>
+<p>下载压缩包之后，直接解压压缩包，得到如下四个文件。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426143531.png" srcset="/img/loading.gif" lazyload alt="解压压缩包"></p>
+<p>因为本身下载了MATLAB，所以自动识别出了<code>enc1.m</code>是MATLAB的代码文件。</p>
+<p>用MATLAB打开之后发现其为一份傅里叶变换的加密的代码，同时发现其中有<code>flag.png</code>。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426144054.png" srcset="/img/loading.gif" lazyload alt="enc1.m"></p>
+<p>剩下两个文件<code>enc.png</code>和<code>enc2.py</code>分别打开，发现<code>enc.png</code>并不能打开为图片文件，而<code>enc.py</code>是我看不懂的一份python，所以<del>我们先不管他</del>。</p>
+<blockquote>
+<p>建议会密码学的可以研究一下这份代码，但是鼠鼠我完全不会密码学，所以我选择了忽视。</p>
+</blockquote>
+<p>注意到有一份没有后缀名的<code>gift4u</code>文件，用winHex打开之后发现其文件头有一串MATLAB的说明，则猜测其为MATLAB下的一种文件。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426144731.png" srcset="/img/loading.gif" lazyload alt="gift4u用winHex打开"></p>
+<p>因为有一份MATLAB的代码，所以优先考虑是不是<code>.m</code>文件，可惜并打不开。</p>
+<p>通过万能的互联网搜索我们可以知道，MATLAB的数据文件<code>.mat</code>符合这样的文件头格式，所以我们将其改为<code>.mat</code>，然后用MATLAB打开，可以发现这份文件正对应着<code>enc1.m</code>中的变量。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426145057.png" srcset="/img/loading.gif" lazyload alt="gift4u.mat"></p>
+<p>在之前的代码中我们可以知道<code>W</code>变量对应着从<code>flag.png</code>中提取出来的数据，所以我们直接将<code>W</code>变量写入<code>flag.png</code>。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs matlab">imwrite(W,<span class="hljs-string">&#x27;flag.png&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>这样我们就得到了<code>flag.png</code>。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426145447.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<p>此题有一个小插曲，因为作者过于<del>SB</del>导致肉眼识别flag失败，多打了一个<code>_</code>，本想前去拷打出题人结果被出题人狠狠拷打。</p>
+<p><img src="\img\BUAACTF\QQ图片20230426145705.jpg" srcset="/img/loading.gif" lazyload alt="罪证"></p>
+<p><img src="\img\BUAACTF\微信截图_20230426145816.png" srcset="/img/loading.gif" lazyload alt="被狠狠拷打"></p>
+<h3 id="2、zhuzhu’s-revenge"><a href="#2、zhuzhu’s-revenge" class="headerlink" title="2、zhuzhu’s revenge*"></a>2、zhuzhu’s revenge*</h3><blockquote>
+<p>X2藏flag的时候不小心把中间数据给你们了，现在他带着完全版回来了！</p>
+</blockquote>
+<p>同上一题一样，我们直接下载文件之后解压发现跟上一题的文件几乎完全相同。</p>
+<p>所以我们同样的直接打开MATLAB然后<del>熟练地</del>改掉<code>gift4u</code>的后缀名将其导入。</p>
+<p>发现如题目描述所说的一样，出题人真的没有直接给我们<code>W</code>矩阵的数据，真的是<del>丧尽天良</del>！</p>
+<p>但是我们可以敏锐的发现，出题人仍然不小心给了我们足够的中间数据，所以我们也不用去看<code>enc2.py</code>。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426150827.png" srcset="/img/loading.gif" lazyload alt="打开文件"></p>
+<p>我们想要的数据是<code>W</code>矩阵，而我们发现<code>W</code>矩阵被分解为了<code>Uw</code>,<code>Sw</code>,<code>Vw</code>三个奇异值，那么意味着我们用这三个奇异值可以反向计算出<code>W</code>矩阵。</p>
+<p>但是我们发现，万恶的出题人同时给我们删掉了我们需要的<code>Sw</code>矩阵。</p>
+<p>接着向下分析我们可以发现，<code>Sw</code>矩阵可以用<code>S2</code>矩阵逆推，但是出题人也没给我们<code>S2</code>矩阵。</p>
+<p>那就接着向下分析，我们可以发现，<code>S2</code>矩阵居然可以用<code>LL2</code>,<code>U</code>,<code>V</code>三个矩阵逆推出来，但是出题人只给了我们<code>LL2</code>矩阵，<del>这不是什么好文明</del>。</p>
+<p>但是<code>U</code>,<code>S</code>,<code>V</code>是<code>LL</code>矩阵分解的奇异值，而我们有<code>LL</code>矩阵，所以逻辑闭环，从后往前逆推就可以计算。</p>
+<p>这里附上逆推的代码，其中用奇异值反推矩阵的方式来自神奇的ChatGPT，大家可以自己去搜索。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab">[U,S,V]=svd(LL);<br>S2=LL2/U/V&#x27;;<br>af=<span class="hljs-number">0.514</span>;<br>Sw=(S2-S)/af;<br>sigma=<span class="hljs-built_in">diag</span>(Sw);<br>Img=Uw*<span class="hljs-built_in">diag</span>(sigma)*Vw&#x27;;<br>imwrite(\img,<span class="hljs-string">&#x27;flag.png&#x27;</span>);<br></code></pre></td></tr></table></figure>
+<p>然后我们就得到了如下flag。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426151704.png" srcset="/img/loading.gif" lazyload alt="flag"></p>
+<p>但是我们交上去并不对，这次在确保了自己的眼睛完全没有出现任何问题之后，我选择了再次拷打出题人。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426151816.png" srcset="/img/loading.gif" lazyload alt="拷打！"></p>
+<p>拷打出题人成功，获得flag。</p>
+<blockquote>
+<p>注：出题人对我们完全不需要用enc2.py<del>感到十分高兴</del></p>
+<p><img src="\img\BUAACTF\微信截图_20230426150722.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</blockquote>
+<h3 id="3、Which-Element"><a href="#3、Which-Element" class="headerlink" title="3、Which Element*"></a>3、Which Element*</h3><blockquote>
+<p>小z同学的师傅为了考验小z，将炼制“再无ddl”药的最后一种配方元素藏到了文件中，小z同学承诺如果你帮他解出答案，他炼制出药后会给你一份，你愿意帮助他吗？</p>
+<p>hint1：Try search “6 color block cipher”.</p>
+</blockquote>
+<p>下载了文件之后，我们发现这是一个流量分析题。</p>
+<p>将流量包直接扔到WireShark中分析，发现其中有很多<code>TCP</code>流量和一些<code>http</code>流量，筛选出其中<code>http</code>流量。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426152653.png" srcset="/img/loading.gif" lazyload alt="筛选http"></p>
+<p>发现是用户与服务器的应答流量包，直接抓取其分组字节流然后保存到本地，我们可以得到四个文件，分别为<code>fakepw.png</code>,<code>flag.wav</code>,<code>passwd.png</code>,<code>flag.zip</code>四个文件。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426153741.png" srcset="/img/loading.gif" lazyload alt="抓取文件"></p>
+<p>用<code>Audacity</code>打开<code>flag.wav</code>我们可以得到摩斯电码的图像，手动分离之后解码，发现是个骗子！</p>
+<p><del>恭喜我们又浪费了几分钟的时间。</del></p>
+<p>打开<code>flag.zip</code>我们可以发现这个压缩包有密码，因为不想winHex看加密，所以我选择了直接扔到<code>ZenCenOp</code>里面去解伪加密，发现解密成功，随后解压，发现文件损坏，修复损坏文件之后发现密码又回来了！所以我们可以知道这个zip是个真加密。</p>
+<p><del>恭喜我们又浪费了几分钟的时间。</del></p>
+<p>然后就是攻克<code>passwd.png</code>的时间，但是发现这个东西不能够解密一点点。</p>
+<blockquote>
+<p>那是一个焦头烂额的晚上，CoolWind正对着一张彩色图片<del>疯狂发电</del>。</p>
+<p>他实在是无法得到图片中的秘密，所以他使用了「奥义之球球hint之术」</p>
+<p>终于出题人经受不住考验给出了hint：Try search “6 color block cipher”.</p>
+</blockquote>
+<p>我们百度此关键词无果，只能使用科学去谷歌搜索，果不其然我们很容易就得到了如下图片：</p>
+<p><img src="\img\BUAACTF\QQ图片20230426154920.png" srcset="/img/loading.gif" lazyload alt="密码表"></p>
+<p>用此密码表对应所给的<code>passwd.png</code>我们可以得到压缩包的密码为<code>3.1415</code>。</p>
+<p>解压压缩包得到如下三个文件：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426155102.png" srcset="/img/loading.gif" lazyload alt="解压"></p>
+<p>把<code>hint.png</code>扔到winHex中分析可以在文件的最后得到一串<code>base64</code>：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426160836.png" srcset="/img/loading.gif" lazyload alt="hex分析"></p>
+<p>解密之后可以得到一句话：<code>What&#39;s that in my hand</code></p>
+<p>通过识图可以知道图片中的人是托里拆利，其手中拿的东西是水银气压计。</p>
+<p>到了这里我们完全看不懂这个hint，在<del>报答出题人</del>之后我们了解到这个题和图片的频域变换有关，搜索相关知识我们可以知道，CTF中常用的一种关于图片的频域变换的加密是盲水印。</p>
+<p>所以我们此时就可以理解这个hint：“水银”意味着“水印”。</p>
+<blockquote>
+<p>这是一个很烂的谐音梗，是一个坏文明，大家不要学习</p>
+</blockquote>
+<p>所以用<code>BlindWaterMark-master</code>，<code>python2</code>直接运行或者<code>python3</code>使用<code>--oldseed</code>运行即可得到其中盲水印。</p>
+<blockquote>
+<p>此处python3版本不能过高，不然在运行时会报错，因为脚本中使用了一个最新版中已经被删除的语法。</p>
+</blockquote>
+<p>因此我们可以得到flag：</p>
+<p><img src="\img\BUAACTF\微信图片_20230426161525.png" srcset="/img/loading.gif" lazyload alt="盲水印"></p>
+<h3 id="4、ChatGPT"><a href="#4、ChatGPT" class="headerlink" title="4、ChatGPT"></a>4、ChatGPT</h3><blockquote>
+<p>都什么年代了还在玩传统chatgpt，试试这个能赚money的（</p>
+<p>复现环境地址：nc 10.212.27.23 23693</p>
+</blockquote>
+<p>用<code>Ubuntu</code>打开地址，跳出一串随机的sha256编码。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426165248.png" srcset="/img/loading.gif" lazyload alt="sha256"></p>
+<p>通过python编写<code>sha256</code>碰撞代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> hashlib <span class="hljs-keyword">import</span> sha256<br>flag_sha256=<span class="hljs-string">&quot;339e60716779f7b89754eb7e306a6a040d2b951661113ee160badd9f9d6c2b35&quot;</span><br>strs=<span class="hljs-string">&quot;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&amp;()*+,-./:;&lt;=&gt;?@[\]^_`&#123;|&#125;~ &quot;</span><br><span class="hljs-keyword">for</span> a <span class="hljs-keyword">in</span> strs:<br>    <span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> strs:<br>        <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> strs:<br>            <span class="hljs-keyword">for</span> d <span class="hljs-keyword">in</span> strs:<br>                code=sha256()<br>               	flag=<span class="hljs-built_in">str</span>(a)+<span class="hljs-built_in">str</span>(b)+<span class="hljs-built_in">str</span>(c)+<span class="hljs-built_in">str</span>(d)+<span class="hljs-string">&#x27;ZFtxnRN3yVBvVKH7l2neXJfDDMzY&#x27;</span><br>                code.update(flag.encode())<br>                <span class="hljs-keyword">if</span> code.hexdigest()==flag_sha256:<br>                    <span class="hljs-built_in">print</span>(flag)<br></code></pre></td></tr></table></figure>
+<p>进行<code>sha256</code>碰撞可以得出<code>XXXX</code>为<code>QtKr</code></p>
+<blockquote>
+<p>每次给的密码是随机的，因此需要自行进行sha256碰撞</p>
+</blockquote>
+<p>进入ChatGPT，进行答题。</p>
+<p>输入<code>/exam</code>可以进行答题，里面题目的答案需要大家自己探索，绝对不是因为<del>作者不会</del>。</p>
+<p>成功答对所给的所有题目之后我们可以得到第一段flag是<code>BUAACTF&#123;C0Ngr@~tuLati0N5_Y0u_R~</code>。</p>
+<p>之后输入<code>/pss</code>可以和gpt进行猜拳游戏。结果可想而知，有一方后出的猜拳游戏是<del>十分公平的</del>，所以gpt会一直赢，那么我们就要思考如何hack。</p>
+<p>既然输会扣掉相对应的钱，那么如果我们bet一个负数会怎么样呢？</p>
+<p><img src="\img\BUAACTF\微信截图_20230426205843.png" srcset="/img/loading.gif" lazyload alt="hack /pss"></p>
+<p>惊喜的发现我们得到了很多<code>money1</code>，成功的hack了<code>/pss</code>。</p>
+<p>那么来到<code>/hard-pss</code>我们同样输入负整数，会发现提示<code>No hack!</code>证明直接输入负数的方式不能再次hack。</p>
+<p>但是我们可以发现，不论我们bet多少整数的<code>money2</code>，其数量不会减少并且<code>money2</code>会变成<code>0.0</code>的浮点数。</p>
+<p>通过查询<code>python</code>的数据类型可以知道，<code>python</code>的数据类型有整数、浮点数、复数。既然整数和浮点数都不行，那么为什么不试试复数呢？</p>
+<p><img src="\img\BUAACTF\微信截图_20230426210358.png" srcset="/img/loading.gif" lazyload alt="hack /hard-pss"></p>
+<p>啊哈！又从gpt那里搞了好多米！</p>
+<p>这样我们就可以愉快的去买flag了。</p>
+<p>消费<code>money1</code>可以买到第二段flag：<code>4~r3a1_MA5Ter_of_0ur_s1llY_CH@t</code></p>
+<p>消费<code>money2</code>可以买到第三段flag：<code>gpT__5_L0vvvvv3_fr0m_M1sc!&#125;</code></p>
+<p>将三段flag拼起来我们可以得到完整的flag：</p>
+<p><code>BUAACTF&#123;C0Ngr@~tuLati0N5_Y0u_R~4~r3a1_MA5Ter_of_0ur_s1llY_CH@tgpT__5_L0vvvvv3_fr0m_M1sc!&#125;</code></p>
+<h3 id="5、Screenshot"><a href="#5、Screenshot" class="headerlink" title="5、Screenshot"></a>5、Screenshot</h3><blockquote>
+<p>小橘子在没事干的时候特别喜欢在各大社交平台灌水，某天他在某平台高强度冲浪的时候遇到了一位自称是BUAACTF2023出题人的网友。在交谈过程中，该网友不小心发送了一张电脑屏幕截图，这引起了小橘子的注意。如果能通过这张图片找到一些有用的信息，或许就能提前拿到比赛的flag……</p>
+<p>小橘子在该社交平台上的id：@PaulGeo43512452</p>
+</blockquote>
+<p>如果经常surfing freely on the Internet的朋友们看到这样的id会想到什么呢？</p>
+<p>对了！要么是微博，要么是小蓝鸟。继续查看给我们的Screenshot：</p>
+<p><img src="\img\BUAACTF\screenshot.jpg" srcset="/img/loading.gif" lazyload alt="Screenshot"></p>
+<p>我们可以发现右上角有很明显的小蓝鸟，因此我们可以锁定该id就是小蓝鸟id。</p>
+<p>我们使用科学登录小蓝鸟之后搜索该id之后可以在Replies里面看到如下推文：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426211136.png" srcset="/img/loading.gif" lazyload alt="Replies"></p>
+<p>发现了一样的截图，这样我们就可以点开发送者@master0751的原版推文进行查看：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426211247.png" srcset="/img/loading.gif" lazyload alt="推文"></p>
+<p>可以知道原作者给出的线索指向其github。</p>
+<p>在个人主页中可以找到github账号，进入github并搜索，可以发现这个github账号下有且只有一个blog的仓库：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426211538.png" srcset="/img/loading.gif" lazyload alt="github"></p>
+<p>我们可以看到有几个库在近期被修改过，因此可以知道出题人更新了这些库，而打开之后可以发现这些库都有关于文章的推送，所以我们可以查看其对于仓库的修改来试图查询flag。</p>
+<p>点击任意一个文件中间的<code>Site updated</code>我们可以进入其历史修改记录的查询页面。</p>
+<p>在这里我们可以发现有一篇文章被完全删掉了，题目为BUAACTF2022题解。</p>
+<p>我们直接将其源码复制下来，在本地新建一个txt将源码复制进去之后将后缀改为<code>.html</code>等图片刷新一会可以得到如下网页：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426212153.png" srcset="/img/loading.gif" lazyload alt="screenshot.html"></p>
+<p>显而易见，我们得到了flag。</p>
+<h3 id="6、签到"><a href="#6、签到" class="headerlink" title="6、签到"></a>6、签到</h3><blockquote>
+<p>别问为什么在这里，问就是后补的</p>
+</blockquote>
+<p>打开所给链接，是o4ange战队的官方blog。</p>
+<p>点开About页自然看到flag</p>
+<p><img src="\img\BUAACTF\微信截图_20230426233613.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="1、mota"><a href="#1、mota" class="headerlink" title="1、mota"></a>1、mota</h3><blockquote>
+<p>鼠鼠很菜，只能签到</p>
+</blockquote>
+<p>打开链接，发现是一个爬塔游戏。</p>
+<p>点击f12进入开发者模式，打开<code>network</code>并刷新获取其源代码。</p>
+<p>注意到<code>Events.js</code>，双击打开。</p>
+<p><img src="\img\BUAACTF\微信截图_20230426233956.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>一般都是在游戏的最后给出flag，因此我们直接拉到最后可以发现如下语句：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426234201.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将两句话在Node.js中打开可以率先得到最后一段flag：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426234311.png" srcset="/img/loading.gif" lazyload alt="最后一段flag"></p>
+<p>除此之外我们可以知道我们的flag都是这个叫<code>Npc=3,仙子</code>的npc给出的，所以直接在网页中搜索可得到第一段铭文储存的flag：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426234452.png" srcset="/img/loading.gif" lazyload alt="第一段flag"></p>
+<p>和第二段加密flag：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426234605.png" srcset="/img/loading.gif" lazyload alt="第二段flag"></p>
+<p>扔到Node.js中解码：</p>
+<p><img src="\img\BUAACTF\微信截图_20230426234656.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>可得第二段flag，故完整flag为：</p>
+<p><code>BUAACTF&#123;HT5_mota_1s_s0_fun!&#125;</code></p>
+<h2 id="Reserve向"><a href="#Reserve向" class="headerlink" title="Reserve向"></a>Reserve向</h2><h3 id="1、Snake"><a href="#1、Snake" class="headerlink" title="1、Snake"></a>1、Snake</h3><p>下载exe之后用ida64打开，找到main函数并且反编译可以得到如下代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> __cdecl <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-type">int</span> argc, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **argv, <span class="hljs-type">const</span> <span class="hljs-type">char</span> **envp)</span></span><br><span class="hljs-function"></span>&#123;<br>  _main(argc, argv, envp);<br>  <span class="hljs-built_in">init</span>();<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  &#123;<br>    <span class="hljs-built_in">draw</span>();<br>    <span class="hljs-built_in">move</span>();<br>    <span class="hljs-keyword">if</span> ( (<span class="hljs-type">unsigned</span> <span class="hljs-type">int</span>)<span class="hljs-built_in">check_game_over</span>() )<br>    &#123;<br>      <span class="hljs-built_in">puts</span>(<span class="hljs-string">&quot;\nGame Over!&quot;</span>);<br>      <span class="hljs-keyword">goto</span> LABEL_7;<br>    &#125;<br>    <span class="hljs-keyword">if</span> ( score &gt; <span class="hljs-number">79</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-built_in">Sleep</span>(<span class="hljs-number">0xA</span>u);<br>  &#125;<br>  <span class="hljs-built_in">decrypt_flag</span>();<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Congratulations! Here it is. %s\n&quot;</span>, flag);<br>LABEL_7:<br>  <span class="hljs-built_in">system</span>(<span class="hljs-string">&quot;pause&quot;</span>);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以知道逻辑是如果score如果大于79胜利得到flag，因此使用动态调试调整内存。</p>
+<p>首先我们可以知道score变量存在<code>0000000000408020</code>内存处，在调试中找到并且修改</p>
+<p><img src="\img\BUAACTF\微信截图_20230427000103.png" srcset="/img/loading.gif" lazyload alt="修改内存"></p>
+<p>得到flag：<code>BUAACTF&#123;debug_1s_useful&#125;</code></p>
+<p><img src="\img\BUAACTF\微信截图_20230427000216.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="2、oneQuiz’s-revenge"><a href="#2、oneQuiz’s-revenge" class="headerlink" title="2、oneQuiz’s revenge*"></a>2、oneQuiz’s revenge*</h3><p>下载了一个安卓apk文件，用模拟器打开可以得到这样的界面：</p>
+<p><img src="\img\BUAACTF\微信图片_20230427000449.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>看起来像上下左右走的方向，所以猜测是一个迷宫。</p>
+<blockquote>
+<p>但是我做的时候并没有猜出来这是一个迷宫</p>
+</blockquote>
+<p>用jadx-gui打开进行逆向可以得到java的码，打开<code>AndroidManifest.xml</code>查看可以知道主函数看起来就是一个迷宫的样子。</p>
+<p><img src="\img\BUAACTF\微信截图_20230427000811.png" srcset="/img/loading.gif" lazyload alt="主函数"></p>
+<p>通过分析代码可以知道，我们成功的条件是当<code>v2 == 11 &amp;&amp; v3 == 11</code>时我们走过路径的英文字母所构成的字符串。将其中v1列表的列表复制出来并且变成二维：</p>
+<p><img src="\img\BUAACTF\微信图片_20230427001105.png" srcset="/img/loading.gif" lazyload alt="迷宫"></p>
+<p>可知我们的目标就是从(2,2)的位置走到<code>*</code>的位置，因此：</p>
+<p><img src="\img\BUAACTF\微信图片_202304270011051.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>走出迷宫，根据摁键顺序得到flag：<code>VaaaVaVVaaaaaVVVVAAJJAAVVVAVVaaaaaJa</code></p>
+<h3 id="3、Minesweep"><a href="#3、Minesweep" class="headerlink" title="3、Minesweep"></a>3、Minesweep</h3><p>不是很经典的扫雷游戏。</p>
+<p>用ida64逆向并获取其主函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">__int64 __fastcall <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">char</span> flag[<span class="hljs-number">15</span>]; <span class="hljs-comment">// [rsp+21h] [rbp-4Fh] BYREF</span><br>  <span class="hljs-type">char</span> show[<span class="hljs-number">7</span>][<span class="hljs-number">7</span>]; <span class="hljs-comment">// [rsp+30h] [rbp-40h] BYREF</span><br>  <span class="hljs-type">int</span> input; <span class="hljs-comment">// [rsp+64h] [rbp-Ch] BYREF</span><br>  <span class="hljs-type">int</span> j; <span class="hljs-comment">// [rsp+68h] [rbp-8h]</span><br>  <span class="hljs-type">int</span> i; <span class="hljs-comment">// [rsp+6Ch] [rbp-4h]</span><br>  __int64 savedregs; <span class="hljs-comment">// [rsp+70h] [rbp+0h] BYREF</span><br><br>  _main();<br>  input = <span class="hljs-number">0</span>;<br>  j = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">6</span>; ++i )<br>  &#123;<br>    <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">6</span>; ++j )<br>      *((_BYTE *)&amp;savedregs + <span class="hljs-number">7</span> * i + j - <span class="hljs-number">64</span>) = <span class="hljs-number">42</span>;<br>  &#125;<br>  <span class="hljs-built_in">menu</span>();<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  &#123;<br>    <span class="hljs-built_in">printf</span>(&amp;byte_4050FE);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;input);<br>    <span class="hljs-keyword">if</span> ( input == <span class="hljs-number">1</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span> ( !input )<br>    &#123;<br>      <span class="hljs-built_in">puts</span>(&amp;byte_405112);<br>      <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(&amp;byte_40511D);<br>  &#125;<br>  <span class="hljs-built_in">puts</span>(&amp;byte_405109);<br>  <span class="hljs-built_in">Game</span>(show);<br>  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, flag);<br>  <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">strlen</span>(flag) == <span class="hljs-number">14</span> )<br>  &#123;<br>    <span class="hljs-built_in">encrypt</span>(flag);<br>    <span class="hljs-keyword">if</span> ( !<span class="hljs-built_in">strcmp</span>(flag, result) )<br>      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Succeed!!!!!&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Wrong lenth!&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>i64;<br>&#125;<span class="hljs-function">__int64 __fastcall <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">char</span> flag[<span class="hljs-number">15</span>]; <span class="hljs-comment">// [rsp+21h] [rbp-4Fh] BYREF</span><br>  <span class="hljs-type">char</span> show[<span class="hljs-number">7</span>][<span class="hljs-number">7</span>]; <span class="hljs-comment">// [rsp+30h] [rbp-40h] BYREF</span><br>  <span class="hljs-type">int</span> input; <span class="hljs-comment">// [rsp+64h] [rbp-Ch] BYREF</span><br>  <span class="hljs-type">int</span> j; <span class="hljs-comment">// [rsp+68h] [rbp-8h]</span><br>  <span class="hljs-type">int</span> i; <span class="hljs-comment">// [rsp+6Ch] [rbp-4h]</span><br>  __int64 savedregs; <span class="hljs-comment">// [rsp+70h] [rbp+0h] BYREF</span><br><br>  _main();<br>  input = <span class="hljs-number">0</span>;<br>  j = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">6</span>; ++i )<br>  &#123;<br>    <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">6</span>; ++j )<br>      *((_BYTE *)&amp;savedregs + <span class="hljs-number">7</span> * i + j - <span class="hljs-number">64</span>) = <span class="hljs-number">42</span>;<br>  &#125;<br>  <span class="hljs-built_in">menu</span>();<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  &#123;<br>    <span class="hljs-built_in">printf</span>(&amp;byte_4050FE);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;input);<br>    <span class="hljs-keyword">if</span> ( input == <span class="hljs-number">1</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span> ( !input )<br>    &#123;<br>      <span class="hljs-built_in">puts</span>(&amp;byte_405112);<br>      <span class="hljs-built_in">exit</span>(<span class="hljs-number">0</span>);<br>    &#125;<br>    <span class="hljs-built_in">puts</span>(&amp;byte_40511D);<br>  &#125;<br>  <span class="hljs-built_in">puts</span>(&amp;byte_405109);<br>  <span class="hljs-built_in">Game</span>(show);<br>  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, flag);<br>  <span class="hljs-keyword">if</span> ( <span class="hljs-built_in">strlen</span>(flag) == <span class="hljs-number">14</span> )<br>  &#123;<br>    <span class="hljs-built_in">encrypt</span>(flag);<br>    <span class="hljs-keyword">if</span> ( !<span class="hljs-built_in">strcmp</span>(flag, result) )<br>      <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Succeed!!!!!&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">else</span><br>  &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Wrong lenth!&quot;</span>);<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>i64;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们首先可以知道flag长度为14位。查看encrypt函数：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> __cdecl <span class="hljs-title">encrypt</span><span class="hljs-params">(<span class="hljs-type">char</span> *s)</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">int</span> temp; <span class="hljs-comment">// [rsp+20h] [rbp-60h]</span><br>  <span class="hljs-type">int</span> k; <span class="hljs-comment">// [rsp+24h] [rbp-5Ch]</span><br>  <span class="hljs-type">int</span> j; <span class="hljs-comment">// [rsp+28h] [rbp-58h]</span><br>  <span class="hljs-type">int</span> i; <span class="hljs-comment">// [rsp+2Ch] [rbp-54h]</span><br><br>  <span class="hljs-keyword">for</span> ( k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-built_in">strlen</span>(s) - <span class="hljs-number">7</span>; ++k )<br>  &#123;<br>    <span class="hljs-keyword">if</span> ( s[k] &gt; <span class="hljs-number">96</span> &amp;&amp; s[k] &lt;= <span class="hljs-number">122</span> )<br>    &#123;<br>      temp = <span class="hljs-number">0</span>;<br>      <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">6</span>; ++i )<br>      &#123;<br>        <span class="hljs-keyword">for</span> ( j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">6</span>; ++j )<br>          temp += (s[k + <span class="hljs-number">1</span> + i] - <span class="hljs-number">97</span>) ^ (mine[<span class="hljs-number">8</span> * i + j] - <span class="hljs-number">97</span>);<br>      &#125;<br>      s[k] = (temp ^ (s[k] - <span class="hljs-number">97</span>)) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>一个这样的加密，其中比较重要的是mine数组的值。</p>
+<p>查看之前的函数可以知道在执行过程中其mine数组的值是会改变的，因此我们需要在调试的过程中抓取其数值。</p>
+<p>查看Game-Sweep函数可知，这根本不是一个什么扫雷游戏，而是一个趟雷游戏QnQ：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> __cdecl <span class="hljs-title">Sweep</span><span class="hljs-params">(<span class="hljs-type">char</span> (*show)[<span class="hljs-number">7</span>])</span></span><br><span class="hljs-function"></span>&#123;<br>  <span class="hljs-type">int</span> y; <span class="hljs-comment">// [rsp+24h] [rbp-Ch] BYREF</span><br>  <span class="hljs-type">int</span> x; <span class="hljs-comment">// [rsp+28h] [rbp-8h] BYREF</span><br>  <span class="hljs-type">int</span> ret; <span class="hljs-comment">// [rsp+2Ch] [rbp-4h]</span><br><br>  x = <span class="hljs-number">0</span>;<br>  y = <span class="hljs-number">0</span>;<br>  <span class="hljs-built_in">printf</span>(&amp;byte_4050C1);<br>  <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %d&quot;</span>, &amp;x, &amp;y);<br>  x = <span class="hljs-number">0</span>;<br>  y = <span class="hljs-number">0</span>;<br>  --HP;<br>  <span class="hljs-keyword">while</span> ( <span class="hljs-number">1</span> )<br>  &#123;<br>    <span class="hljs-keyword">if</span> ( y == <span class="hljs-number">6</span> )<br>    &#123;<br>      ++x;<br>      y = <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>      ++y;<br>    &#125;<br>    <span class="hljs-keyword">if</span> ( x &gt; <span class="hljs-number">6</span> )<br>      <span class="hljs-keyword">break</span>;<br>    <span class="hljs-keyword">if</span> ( !HP )<br>    &#123;<br>      <span class="hljs-built_in">puts</span>(&amp;byte_4050D4);<br>      <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    ret = <span class="hljs-built_in">get_num</span>(x, y);<br>    (*show)[<span class="hljs-number">7</span> * x + y] = ret + <span class="hljs-number">48</span>;<br>    mine[<span class="hljs-number">8</span> * x + y] += ret;<br>  &#125;<br>  <span class="hljs-built_in">puts</span>(&amp;byte_4050E1);<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>所以意味着要得到修改之后的数组我们先要修改HP。HP储存在<code>0000000000404058</code>，mine数组在<code>0000000000404020</code>我们关注这两个地址进行修改和提取：</p>
+<p><img src="\img\BUAACTF\微信截图_20230427002514.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将数组的十六进制转化为十进制我们可以得到如下数组：</p>
+<p><code>[97,99,99,100,100,99,100,0,99,101,100,99,100,99,97,0,99,102,100,101,98,99,99,0,100,100,100,98,100,99,99,0,100,100,101,98,100,98,99,0,99,99,97,100,101,99,99,0,97,100,99,100,98,97,99,0]</code></p>
+<p>且result字符串为’vahii_Ts_nice!’</p>
+<p>因为本人不会递推，所以采用正向爆破的方式进行：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> forr(m) for (int m = 97; m &lt;= 122; m++)</span><br><span class="hljs-type">char</span> s[<span class="hljs-number">20</span>] = <span class="hljs-string">&quot;vahii_Ts_nice!&quot;</span>;<br><span class="hljs-type">char</span> ss[<span class="hljs-number">20</span>] = <span class="hljs-string">&quot;vahii_Ts_nice!&quot;</span>;<br><span class="hljs-type">char</span> sss[<span class="hljs-number">20</span>] = <span class="hljs-string">&quot;vahii_Ts_nice!&quot;</span>;<br><span class="hljs-type">int</span> mine[<span class="hljs-number">56</span>]=&#123;<span class="hljs-number">97</span>,<span class="hljs-number">99</span>,<span class="hljs-number">99</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">99</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">99</span>,<span class="hljs-number">101</span>,<span class="hljs-number">100</span>,<span class="hljs-number">99</span>,<span class="hljs-number">100</span>,<span class="hljs-number">99</span>,<span class="hljs-number">97</span>,<span class="hljs-number">0</span>,<span class="hljs-number">99</span>,<span class="hljs-number">102</span>,<span class="hljs-number">100</span>,<span class="hljs-number">101</span>,<span class="hljs-number">98</span>,<span class="hljs-number">99</span>,<span class="hljs-number">99</span>,<span class="hljs-number">0</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">98</span>,<span class="hljs-number">100</span>,<span class="hljs-number">99</span>,<span class="hljs-number">99</span>,<span class="hljs-number">0</span>,<span class="hljs-number">100</span>,<span class="hljs-number">100</span>,<span class="hljs-number">101</span>,<span class="hljs-number">98</span>,<span class="hljs-number">100</span>,<span class="hljs-number">98</span>,<span class="hljs-number">99</span>,<span class="hljs-number">0</span>,<span class="hljs-number">99</span>,<span class="hljs-number">99</span>,<span class="hljs-number">97</span>,<span class="hljs-number">100</span>,<span class="hljs-number">101</span>,<span class="hljs-number">99</span>,<span class="hljs-number">99</span>,<span class="hljs-number">0</span>,<span class="hljs-number">97</span>,<span class="hljs-number">100</span>,<span class="hljs-number">99</span>,<span class="hljs-number">100</span>,<span class="hljs-number">98</span>,<span class="hljs-number">97</span>,<span class="hljs-number">99</span>,<span class="hljs-number">0</span>&#125;;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    forr(a)<br>    &#123;<br>        s[<span class="hljs-number">0</span>] = a;<br>        forr(b)<br>        &#123;<br>            s[<span class="hljs-number">1</span>] = b;<br>            forr(c)<br>            &#123;<br>                s[<span class="hljs-number">2</span>] = c;<br>                forr(d)<br>                &#123;<br>                    s[<span class="hljs-number">3</span>] = d;<br>                    forr(e)<br>                    &#123;<br>                        s[<span class="hljs-number">4</span>] = e;<br>                        forr(f)<br>                        &#123;<br>                            s[<span class="hljs-number">6</span>] = f;<br>                            <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = <span class="hljs-number">0</span>; k &lt; <span class="hljs-built_in">strlen</span>(s) - <span class="hljs-number">7</span>; ++k)<br>                            &#123;<br>                                <span class="hljs-keyword">if</span> (s[k] &gt; <span class="hljs-number">96</span> &amp;&amp; s[k] &lt;= <span class="hljs-number">122</span>)<br>                                &#123;<br>                                    <span class="hljs-type">int</span> temp = <span class="hljs-number">0</span>;<br>                                    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">6</span>; ++i)<br>                                    &#123;<br>                                        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-number">6</span>; ++j)<br>                                            temp += (s[k + <span class="hljs-number">1</span> + i] - <span class="hljs-number">97</span>) ^ (mine[<span class="hljs-number">8</span> * i + j] - <span class="hljs-number">97</span>);<br>                                    &#125;<br>                                    ss[k] = (temp ^ (s[k] - <span class="hljs-number">97</span>)) % <span class="hljs-number">26</span> + <span class="hljs-number">97</span>;<br>                                &#125;<br>                            &#125;<br>                            <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">strcmp</span>(ss,sss))<br>                                <span class="hljs-built_in">puts</span>(s);<br>                        &#125;<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;END&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>可以得到如下答案：</p>
+<p><img src="\img\BUAACTF\微信截图_20230427003823.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>选择其中看起来最正常的答案<code>patch_is_nice!</code>试一下，正好是flag。</p>
+<blockquote>
+<p>鼠鼠第一次写CTF题解，有不当之处还请大佬指教。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/">#CTF</a>
+      
+        <a href="/tags/Misc/">#Misc</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>BUAACTF-Writeup</div>
+      <div>http://cool-wind.top/2023/04/27/BUAACTF-Writeup/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>CoolWind</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年4月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/07/08/Web%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Web学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Web学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/24/%E5%85%B3%E4%BA%8E%E6%96%B0BANK%E5%92%8C%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB/" title="关于新BANK和函数调用关系">
+                        <span class="hidden-mobile">关于新BANK和函数调用关系</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
